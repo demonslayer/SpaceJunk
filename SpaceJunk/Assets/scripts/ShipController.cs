@@ -12,7 +12,12 @@ public class Boundary {
 public class ShipController : MonoBehaviour {
 
 	public float speed;
+	public float fireRate;
+	public GameObject shot;
+	public Transform shotSpawn;
+
 	private Boundary boundary;
+	private float nextFire;
 
 	void Start() {
 		Debug.Log (Screen.height);
@@ -26,6 +31,13 @@ public class ShipController : MonoBehaviour {
 		boundary.yMax = maxes.y - 3;
 		boundary.xMin = mins.x + 1;
 		boundary.yMin = mins.y + 1;
+	}
+
+	void Update() {
+		if (Input.GetButton("Fire1") && Time.time > nextFire) {
+			nextFire = Time.time + fireRate;
+			Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+		}
 	}
 
 	void FixedUpdate() {
