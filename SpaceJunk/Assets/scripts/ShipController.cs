@@ -1,9 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+[System.Serializable]
+public class Boundary {
+	
+	public float xMin, xMax, yMin, yMax;
+	
+}
+
 public class ShipController : MonoBehaviour {
 
 	public float speed;
+	private Boundary boundary;
+
+	void Start() {
+		Debug.Log (Screen.height);
+
+		Vector3 maxes = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
+		Vector3 mins = Camera.main.ScreenToWorldPoint(new Vector3(0, 0));
+		Debug.Log("height: " + mins.y + " and width: " + mins.x);
+
+		this.boundary = new Boundary();
+		boundary.xMax = maxes.x;
+		boundary.yMax = maxes.y - 3;
+		boundary.xMin = mins.x;
+		boundary.yMin = mins.y;
+	}
 
 	void FixedUpdate() {
 		float moveHorizontal = Input.GetAxis("Horizontal");
@@ -13,6 +36,10 @@ public class ShipController : MonoBehaviour {
 		Vector2 movement = new Vector2(moveHorizontal, moveVertical);
 
 		rigidBody.velocity = movement * speed;
+
+		rigidBody.position = new Vector2(
+			Mathf.Clamp(rigidBody.position.x, boundary.xMin, boundary.xMax), 
+			Mathf.Clamp(rigidBody.position.y, boundary.yMin, boundary.yMax));
 
 	}
 }
