@@ -22,10 +22,10 @@ public class ShipController : MonoBehaviour {
 		Debug.Log("height: " + mins.y + " and width: " + mins.x);
 
 		this.boundary = new Boundary();
-		boundary.xMax = maxes.x;
+		boundary.xMax = maxes.x - 1;
 		boundary.yMax = maxes.y - 3;
-		boundary.xMin = mins.x;
-		boundary.yMin = mins.y;
+		boundary.xMin = mins.x + 1;
+		boundary.yMin = mins.y + 1;
 	}
 
 	void FixedUpdate() {
