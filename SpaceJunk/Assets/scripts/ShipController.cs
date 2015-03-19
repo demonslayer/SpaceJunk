@@ -24,7 +24,6 @@ public class ShipController : MonoBehaviour {
 
 		Vector3 maxes = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
 		Vector3 mins = Camera.main.ScreenToWorldPoint(new Vector3(0, 0));
-		Debug.Log("height: " + mins.y + " and width: " + mins.x);
 
 		this.boundary = new Boundary();
 		boundary.xMax = maxes.x - 1;
