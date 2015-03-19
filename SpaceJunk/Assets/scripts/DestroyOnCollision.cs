@@ -3,9 +3,14 @@ using System.Collections;
 
 public class DestroyOnCollision : MonoBehaviour {
 
+	public GameObject explosion;
+
 	void OnTriggerEnter2D(Collider2D other) {
-		Debug.Log("You are here");
+
+		Instantiate(explosion, transform.position, transform.rotation);
+
 		Destroy(other.gameObject);
 		Destroy(gameObject);
+
 	}
 }
