@@ -10,12 +10,5 @@ public class Mover : MonoBehaviour {
 		rigid = GetComponent<Rigidbody2D>();
 		rigid.velocity = Vector2.up * speed;
 	}
-
-	void Update () {
-		float top = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).y;
-		if (rigid.position.y >= top) {
-			Destroy(gameObject);
-		}
-	}
-
+	
 }

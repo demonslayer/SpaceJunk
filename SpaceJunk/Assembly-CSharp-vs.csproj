@@ -46,6 +46,8 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\scripts\DestroyOffscreen.cs" />
+     <Compile Include="Assets\scripts\DestroyOnCollision.cs" />
      <Compile Include="Assets\scripts\Mover.cs" />
      <Compile Include="Assets\scripts\ShipController.cs" />
      <Compile Include="Assets\scripts\Tumbler.cs" />
