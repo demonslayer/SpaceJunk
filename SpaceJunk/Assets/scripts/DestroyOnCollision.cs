@@ -11,7 +11,7 @@ public class DestroyOnCollision : MonoBehaviour {
 		Instantiate(explosion, transform.position, transform.rotation);
 
 		if (other.tag == "Player") {
-			Instantiate(playerExplosion, other.transform.position, other.transform.rotation);
+			Instantiate(playerExplosion, transform.position, transform.rotation);
 		}
 
 		Destroy(other.gameObject);
