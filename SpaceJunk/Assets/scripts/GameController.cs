@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
 
@@ -10,13 +11,22 @@ public class GameController : MonoBehaviour {
 	public int enemyCount;
 
 	private bool gameOver;
+	private int currentScore;
+	public Text scoreText;
 
 	void Start () {
 
 		gameOver = false;
+		currentScore = 0;
+		UpdateScore(0);
 
 		StartCoroutine(Spawn ());
 	
+	}
+
+	private void UpdateScore(int newScore) {
+		currentScore += newScore;
+		scoreText.text = "Score: " + currentScore;
 	}
 
 	IEnumerator Spawn() {
