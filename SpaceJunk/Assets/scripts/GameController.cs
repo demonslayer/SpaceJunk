@@ -29,6 +29,10 @@ public class GameController : MonoBehaviour {
 		scoreText.text = "Score: " + currentScore;
 	}
 
+	public void EndGame() {
+		gameOver = true;
+	}
+
 	IEnumerator Spawn() {
 		float top = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).y;
 		float minX = Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x;
@@ -45,6 +49,8 @@ public class GameController : MonoBehaviour {
 			}
 
 		}
+
+		Debug.Log("the game is over");
 
 	}
 }

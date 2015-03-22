@@ -27,6 +27,7 @@ public class DestroyOnCollision : MonoBehaviour {
 
 		if (other.tag == "Player") {
 			Instantiate(playerExplosion, transform.position, transform.rotation);
+			gameController.EndGame();
 		}
 
 		gameController.UpdateScore(scoreValue);
