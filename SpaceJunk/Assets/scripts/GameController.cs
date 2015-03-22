@@ -24,7 +24,7 @@ public class GameController : MonoBehaviour {
 	
 	}
 
-	private void UpdateScore(int newScore) {
+	public void UpdateScore(int newScore) {
 		currentScore += newScore;
 		scoreText.text = "Score: " + currentScore;
 	}
