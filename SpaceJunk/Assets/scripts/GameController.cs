@@ -13,13 +13,14 @@ public class GameController : MonoBehaviour {
 	private bool gameOver;
 	private int currentScore;
 	public Text scoreText;
-	public Text gameOverText;
+	public Canvas gameOverCanvas;
 
 	void Start () {
 
+		gameOverCanvas.gameObject.SetActive(false);
+
 		gameOver = false;
 		currentScore = 0;
-		gameOverText.text = "";
 		UpdateScore(0);
 
 		StartCoroutine(Spawn ());
@@ -33,6 +34,7 @@ public class GameController : MonoBehaviour {
 
 	public void EndGame() {
 		gameOver = true;
+		gameOverCanvas.gameObject.SetActive(true);
 	}
 
 	IEnumerator Spawn() {
@@ -51,8 +53,6 @@ public class GameController : MonoBehaviour {
 			}
 
 		}
-
-		gameOverText.text = "Game Over";
 
 		Debug.Log("the game is over");
 
