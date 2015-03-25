@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
@@ -7,7 +8,6 @@ public class GameController : MonoBehaviour {
 	public float spawnWait;
 	public float startWait;
 
-	public GameObject enemy;
 	public int enemyCount;
 
 	private bool gameOver;
@@ -15,9 +15,12 @@ public class GameController : MonoBehaviour {
 	public Text scoreText;
 	public Canvas gameOverCanvas;
 
+	public GameObject firstEnemy;
+	public GameObject secondEnemy;
+	private List<GameObject> enemies;
+	
 	void Start () {
 
-		Debug.Log("About to make panel invisible");
 		gameOverCanvas.gameObject.SetActive(false);
 
 		gameOver = false;
@@ -25,6 +28,10 @@ public class GameController : MonoBehaviour {
 		UpdateScore(0);
 
 		StartCoroutine(Spawn ());
+
+		enemies = new List<GameObject>();
+		enemies.Add(firstEnemy);
+		enemies.Add(secondEnemy);
 	
 	}
 
@@ -48,6 +55,9 @@ public class GameController : MonoBehaviour {
 		while (!gameOver) {
 
 			for (int i = 0; i < enemyCount; i++) {
+				int RandomEnemy = Random.Range(0, enemies.Count);
+				GameObject enemy = enemies[RandomEnemy];
+
 				Vector2 spawnPosition = new Vector2(Random.Range(minX, maxX), top);
 				Instantiate(enemy, spawnPosition, Quaternion.identity);
 				yield return new WaitForSeconds(spawnWait);

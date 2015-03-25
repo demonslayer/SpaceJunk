@@ -6,11 +6,13 @@ public class DestroyOnCollision : MonoBehaviour {
 	public GameObject explosion;
 	public GameObject playerExplosion;
 
-	public int scoreValue;
-
+	private int scoreValue;
 	private GameController gameController;
+	private EnemyProperties enemyProperties;
 
 	void Start() {
+		scoreValue = GetComponent<EnemyProperties>().scoreValue;
+
 		GameObject gameControllerObject = GameObject.FindWithTag("GameController");
 		if (gameControllerObject != null) {
 			gameController = gameControllerObject.GetComponent<GameController>();
