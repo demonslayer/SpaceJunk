@@ -17,6 +17,7 @@ public class GameController : MonoBehaviour {
 
 	void Start () {
 
+		Debug.Log("About to make panel invisible");
 		gameOverCanvas.gameObject.SetActive(false);
 
 		gameOver = false;
@@ -39,8 +40,8 @@ public class GameController : MonoBehaviour {
 
 	IEnumerator Spawn() {
 		float top = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).y;
-		float minX = Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x;
-		float maxX = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).x;
+		float minX = Camera.main.ScreenToWorldPoint(new Vector2(0, 0)).x + 1;
+		float maxX = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width, Screen.height)).x - 1;
 
 		yield return new WaitForSeconds(startWait);
 

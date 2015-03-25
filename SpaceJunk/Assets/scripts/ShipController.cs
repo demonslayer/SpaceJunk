@@ -20,8 +20,6 @@ public class ShipController : MonoBehaviour {
 	private float nextFire;
 
 	void Start() {
-		Debug.Log (Screen.height);
-
 		Vector3 maxes = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width, Screen.height));
 		Vector3 mins = Camera.main.ScreenToWorldPoint(new Vector3(0, 0));
 
