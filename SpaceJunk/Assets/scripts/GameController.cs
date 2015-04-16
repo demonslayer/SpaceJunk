@@ -17,6 +17,8 @@ public class GameController : MonoBehaviour {
 
 	public GameObject firstEnemy;
 	public GameObject secondEnemy;
+	public GameObject thirdEnemy;
+	public GameObject fourthEnemy;
 	private List<GameObject> enemies;
 	
 	void Start () {
@@ -32,6 +34,8 @@ public class GameController : MonoBehaviour {
 		enemies = new List<GameObject>();
 		enemies.Add(firstEnemy);
 		enemies.Add(secondEnemy);
+		enemies.Add(thirdEnemy);
+		enemies.Add(fourthEnemy);
 	
 	}
 
