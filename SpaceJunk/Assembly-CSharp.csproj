@@ -51,6 +51,7 @@
      <Compile Include="Assets\scripts\DestroyOnCollision.cs" />
      <Compile Include="Assets\scripts\EnemyProperties.cs" />
      <Compile Include="Assets\scripts\GameController.cs" />
+     <Compile Include="Assets\scripts\LoadLevelListener.cs" />
      <Compile Include="Assets\scripts\Mover.cs" />
      <Compile Include="Assets\scripts\QuitClickListener.cs" />
      <Compile Include="Assets\scripts\RestartClickListener.cs" />

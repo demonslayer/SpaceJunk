@@ -8,6 +8,7 @@ public class QuitClickListener : MonoBehaviour {
 
 		Button butt = GetComponent<Button>();
 		butt.onClick.AddListener(delegate() { 
+			Debug.Log("Pressed the button to quit");
 			Application.Quit();
 		});
 
