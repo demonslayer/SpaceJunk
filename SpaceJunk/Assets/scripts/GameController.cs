@@ -58,6 +58,11 @@ public class GameController : MonoBehaviour {
 
 		while (!gameOver) {
 
+			int spawnRates = 0;
+//			for (GameObject enemy in enemies) {
+//
+//			}
+
 			for (int i = 0; i < enemyCount; i++) {
 				int RandomEnemy = Random.Range(0, enemies.Count);
 				GameObject enemy = enemies[RandomEnemy];
