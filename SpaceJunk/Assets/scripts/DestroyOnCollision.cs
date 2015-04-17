@@ -25,17 +25,20 @@ public class DestroyOnCollision : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other) {
 
-		Instantiate(explosion, transform.position, transform.rotation);
+		if (other.tag != "Enemy") {
+
+			Instantiate(explosion, transform.position, transform.rotation);
+			gameController.UpdateScore(scoreValue);
+			
+			Destroy(other.gameObject);
+			Destroy(gameObject);
+
+		}
 
 		if (other.tag == "Player") {
 			Instantiate(playerExplosion, transform.position, transform.rotation);
 			gameController.EndGame();
 		}
-
-		gameController.UpdateScore(scoreValue);
-
-		Destroy(other.gameObject);
-		Destroy(gameObject);
 
 	}
 }

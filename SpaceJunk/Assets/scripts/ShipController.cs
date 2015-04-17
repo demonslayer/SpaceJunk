@@ -38,8 +38,15 @@ public class ShipController : MonoBehaviour {
 	}
 
 	void FixedUpdate() {
-		float moveHorizontal = Input.GetAxis("Horizontal");
-		float moveVertical = Input.GetAxis("Vertical");
+		float moveHorizontal = Input.acceleration.x;
+		float yDirection = Input.acceleration.y;
+
+		float moveVertical = 0;
+		if (yDirection > 0) {
+			moveVertical = yDirection * 4.0f;
+		} else {
+			moveVertical = yDirection * 0.5f;
+		}
 		Rigidbody2D rigidBody = GetComponent<Rigidbody2D>();
 		
 		Vector2 movement = new Vector2(moveHorizontal, moveVertical);
