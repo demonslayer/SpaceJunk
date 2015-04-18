@@ -11,10 +11,12 @@ public class GameController : MonoBehaviour {
 	public int enemyCount;
 
 	private bool gameOver;
+
 	private int currentScore;
 	public Text scoreText;
 	public Text timeText;
 	public Canvas gameOverCanvas;
+	public Canvas levelClearedCanvas;
 	public int maxTime;
 	public GameObject ship;
 	
@@ -23,8 +25,10 @@ public class GameController : MonoBehaviour {
 	void Start () {
 
 		gameOverCanvas.gameObject.SetActive(false);
+		levelClearedCanvas.gameObject.SetActive(false);
 
 		gameOver = false;
+
 		currentScore = 0;
 		UpdateScore(0);
 
@@ -47,11 +51,20 @@ public class GameController : MonoBehaviour {
 		gameOverCanvas.gameObject.SetActive(true);
 	}
 
+	private void ClearLevel() {
+		gameOver = true;
+		levelClearedCanvas.gameObject.SetActive(true);
+	}
+
 	IEnumerator UpdateTime() {
 
 		int timeLeft = maxTime;
 		
 		while(!gameOver) {
+			if (timeLeft <= 0) {
+				ClearLevel();
+			}
+
 			timeText.text = "Time: " + timeLeft;
 			timeLeft--;
 			
