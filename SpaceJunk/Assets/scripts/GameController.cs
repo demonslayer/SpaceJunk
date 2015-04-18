@@ -13,13 +13,11 @@ public class GameController : MonoBehaviour {
 	private bool gameOver;
 	private int currentScore;
 	public Text scoreText;
+	public Text timeText;
 	public Canvas gameOverCanvas;
-
-	public GameObject firstEnemy;
-	public GameObject secondEnemy;
-	public GameObject thirdEnemy;
-	public GameObject fourthEnemy;
-	private List<GameObject> enemies;
+	public int maxTime;
+	
+	public List<GameObject> enemies;
 	
 	void Start () {
 
@@ -30,23 +28,48 @@ public class GameController : MonoBehaviour {
 		UpdateScore(0);
 
 		StartCoroutine(Spawn ());
-
-		enemies = new List<GameObject>();
-		enemies.Add(firstEnemy);
-		enemies.Add(secondEnemy);
-		enemies.Add(thirdEnemy);
-		enemies.Add(fourthEnemy);
+		StartCoroutine(UpdateTime());
 	
 	}
 
+//	void Update () {
+//
+//		while (!gameOver) {
+//			Debug.Log("hi");
+////			UpdateTime();
+//		}
+//
+//	}
+
+//	private void UpdateTime() {
+//		float timeFloat = Time.timeSinceLevelLoad;
+//		timeText.text = "Time: " + timeFloat;
+////		int seconds = (int) Mathf.Floor(timeFloat);
+////		int timeLeft = maxTime - seconds;
+////		timeText.text = "Time: " + timeLeft; 
+//	}
+
 	public void UpdateScore(int newScore) {
 		currentScore += newScore;
-		scoreText.text = "Score: " + currentScore;
+		scoreText.text = "Credits: " + currentScore;
 	}
 
 	public void EndGame() {
 		gameOver = true;
 		gameOverCanvas.gameObject.SetActive(true);
+	}
+
+	IEnumerator UpdateTime() {
+
+		int timeLeft = maxTime;
+		
+		while(!gameOver) {
+			timeText.text = "Time: " + timeLeft;
+			timeLeft--;
+			
+			yield return new WaitForSeconds(1);
+		}
+
 	}
 
 	IEnumerator Spawn() {
@@ -58,11 +81,6 @@ public class GameController : MonoBehaviour {
 
 		while (!gameOver) {
 
-			int spawnRates = 0;
-//			for (GameObject enemy in enemies) {
-//
-//			}
-
 			for (int i = 0; i < enemyCount; i++) {
 				int RandomEnemy = Random.Range(0, enemies.Count);
 				GameObject enemy = enemies[RandomEnemy];
@@ -73,8 +91,5 @@ public class GameController : MonoBehaviour {
 			}
 
 		}
-
-		Debug.Log("the game is over");
-
 	}
 }
