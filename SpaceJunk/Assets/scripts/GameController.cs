@@ -16,6 +16,7 @@ public class GameController : MonoBehaviour {
 	public Text timeText;
 	public Canvas gameOverCanvas;
 	public int maxTime;
+	public GameObject ship;
 	
 	public List<GameObject> enemies;
 	
@@ -27,27 +28,14 @@ public class GameController : MonoBehaviour {
 		currentScore = 0;
 		UpdateScore(0);
 
+		Vector2 shipPosition = new Vector2(0, -4);
+		Instantiate(ship, shipPosition, Quaternion.identity);
+
 		StartCoroutine(Spawn ());
 		StartCoroutine(UpdateTime());
 	
 	}
 
-//	void Update () {
-//
-//		while (!gameOver) {
-//			Debug.Log("hi");
-////			UpdateTime();
-//		}
-//
-//	}
-
-//	private void UpdateTime() {
-//		float timeFloat = Time.timeSinceLevelLoad;
-//		timeText.text = "Time: " + timeFloat;
-////		int seconds = (int) Mathf.Floor(timeFloat);
-////		int timeLeft = maxTime - seconds;
-////		timeText.text = "Time: " + timeLeft; 
-//	}
 
 	public void UpdateScore(int newScore) {
 		currentScore += newScore;
